@@ -1,0 +1,26 @@
+.main-btn{
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    background: transparent;
+    border: 0.05rem solid var(--lightBlue);
+    color: var(--lightBlue);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.main-btn:hover{
+    background: var(--lightBlue);
+    color: var(--mainBlue) !important;
+}
+.main-btn:focus{
+    outline: none;
+}
+.main-btn:disabled{
+    border-color: var(--mainYellow);
+    color: var(--mainYellow);
+}
+.main-btn:disabled:hover{
+    background: var(--mainYellow);
+    color: var(--mainBlue);
+}

@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/Navbar/Navbar";
+import ProductList from "./components/ProductList/ProductList";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Cart from "./components/Cart/Cart";
+import Default from "./components/Default/Default";
+import {ProductProvider} from "./Context/ProductContext";
+import Modal from "./components/Modal/Modal";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <ProductProvider>
+                <Router>
+                    <Navbar/>
+                    <Switch>
+                        <Route path="/" exact component={ProductList}/>
+                        <Route path="/product/:productId" component={ProductDetails}/>
+                        <Route path="/cart" component={Cart}/>
+                        <Route component={Default}/>
+                    </Switch>
+                    <Modal/>
+                </Router>
+            </ProductProvider>
+        );
+    }
 }
 
 export default App;
